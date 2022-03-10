@@ -1,0 +1,46 @@
+<div class="col-md-12">
+    <div class="alert alert-info" *ngIf="isLoading && !isError">
+        Prasome palaukti
+    </div>
+    <div class="alert alert-danger" *ngIf="isError">
+        <b>{{error}}</b>
+    </div>
+    <div class="card" *ngIf="!isLoading">
+        <div class="card-header">
+            Prekiu sarasas
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nuotrauka</th>
+                        <th>Pavadinimas</th>
+                        <th>Aprasas</th>
+                        <th>Kiekis</th>
+                        
+                        <th>Kaina</th>
+                        <th>Veiksmai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let preke of prekiuSarasas;let i=index">
+                        <td style="width: 200px;">
+                            <img src="{{preke.image}}" class="img-thumbnail" alt=".img">
+                        </td>
+                        
+                        <td>{{preke.name}}</td>
+                        <td>{{preke.description}}</td>
+                      
+                        <td>{{preke.ammount}}</td>
+                        
+                        <td>{{preke.price}}</td>
+                        <td>
+                            <a class="btn btn-primary" [routerLink]="['/update',preke.id]" >Redaguoti</a>&nbsp;
+                            <button class="btn btn-danger m-1" type="button" (click)="delete(preke.id)">Istrinti</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

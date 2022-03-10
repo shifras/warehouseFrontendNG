@@ -1,0 +1,44 @@
+<div class="col-md-12">
+
+    <div class="alert alert-danger" *ngIf="error!=null" [innerHTML]="error"></div>
+
+    <div class="card" *ngIf="!isNoEntry">
+
+
+        <div class="card-header">
+            Atnaujinti prekes duomenis
+        </div>
+        <div class="card-body" >
+            <!-- ngForm tai toks tipas specifinis ng -->
+            <form (ngSubmit)="onSubmit(forma)" #forma="ngForm"> 
+                <div class="mb-3">
+                    <label for="name" class="form-label">Pavadinimas</label>
+                    <!-- ngModel parodo kad tai yra ngForm atributas, o #name="ngModel" parodo kad lokalus identifieris yra ngModel tipo, ir i ji galim kreiptis kaip i toki
+                    ir jis tures tuos atributus tokius kaip .value ar .valid -->
+                    <input  type="text" class="form-control" ngModel name="name" maxlength="20" minlength="3" #nameLR="ngModel" [(ngModel)]="name" (keyup)="onNameUpdate()" [ngClass]="{'error':!isNameValid}">
+                    <span *ngIf="!nameLR.valid && nameLR.touched && nameLR.value != '' ">Pavadinimas turi buti ne ilgesnis nei 20 ir ne trumpesnis nei 3</span>
+                    <span *ngIf=" nameLR.value == '' ">Laukelis negali buti tuscias</span>
+                    <span *ngIf=" !isNameValid">Tokia preke jau egzistuoja</span>
+                </div>
+                <div class="mb-2">
+                    <label for="description" class="form-label">Aprasymas</label>
+                    <textarea class="form-control" ngModel name="description" #descriptionLR="ngModel" rows="4" cols="50" maxlength="255" [(ngModel)]="description"></textarea>
+                </div>
+                <div class="mb-3 col-md-1">
+                    <label for="ammount" class="form-label">Kiekis</label>
+                    <input ngModel name="ammount" #ammountLR="ngModel" type="text" class="form-control" [(ngModel)]="ammount">
+                </div>
+                <div class="mb-3 col-md-2">
+                    <label for="price" class="form-label">Kaina</label>
+                    <input ngModel name="price" #priceLR="ngModel" type="number" class="form-control" [(ngModel)]="price">
+                    <span *ngIf=" priceLR.value == '' ">Laukelis negali buti tuscias</span>
+                </div>
+                <div class="mb-3">
+                    <label for="img" class="form-label">Paveikslelio nuoroda</label>
+                   <input type="url" ngModel name="image" class="form-control" [(ngModel)]="image">
+                </div>
+                <button class="btn btn-success" [disabled]="!forma.valid">Atnaujinti</button>
+            </form>
+        </div>
+    </div>
+</div>
