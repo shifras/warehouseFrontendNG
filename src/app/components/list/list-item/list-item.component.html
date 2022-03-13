@@ -1,1 +1,17 @@
-<p>list-item works!</p>
+
+    <ul class="list-group" >
+        <li class="list-group-item">
+            <img src="{{preke.image}}" class="img-thumbnail" alt=".img">
+        </li>
+        
+        <li class="list-group-item"><b>Pavadinimas: </b><span>{{preke.name}}</span></li>
+        <li class="list-group-item"><b>Aprašymas: </b>{{preke.description}}</li>
+    
+        <li class="list-group-item"><b>Kiekis: </b>{{preke.ammount}}</li>
+        
+        <li class="list-group-item"><b>Kaina: </b>{{preke.price}}</li>
+        <li class="list-group-item">
+            <a class="btn btn-primary" [routerLink]="['/update',preke.id]" >Redaguoti</a>&nbsp;<button class="btn btn-danger m-1" type="button" (click)="delete(preke.id)">Istrinti</button>
+        </li>
+    </ul>
+

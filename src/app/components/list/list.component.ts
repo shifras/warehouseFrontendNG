@@ -36,20 +36,26 @@ export class ListComponent implements OnInit {
     
   }
 
-  public delete(id){
-    this.prekiuService.deletePreke(id).subscribe(
-      (result)=>{
-      this.loadPrekiuList();
-    },
-    (response)=>{
-      this.isError=true;
-      this.error=response.error.name;
-    }
-    );
-  }
+  // public delete(id){
+  //   this.prekiuService.deletePreke(id).subscribe(
+  //     (result)=>{
+  //     this.loadPrekiuList();
+  //   },
+  //   (response)=>{
+  //     this.isError=true;
+  //     this.error=response.error.name;
+  //   }
+  //   );
+  // }
 
-  public afterDelete(){
-    this.loadPrekiuList();
+  public afterDelete(tekst){
+    if (tekst==null){
+      this.loadPrekiuList();
+    } else {
+      this.error=tekst;
+      this.isError=true;
+    }
+    
   }
 
 }

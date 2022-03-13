@@ -1,6 +1,9 @@
 <div class="col-md-12">
-    <div class="alert alert-info" *ngIf="isLoading && !isError">
+    <!-- <div class="alert alert-info" *ngIf="isLoading && !isError">
         Prasome palaukti
+    </div> -->
+    <div *ngIf="isLoading && !isError" class="text-center">
+        <img src="https://c.tenor.com/gF5waDlWTeIAAAAC/yjhcmovie-loading.gif">
     </div>
     <div class="alert alert-danger" *ngIf="isError">
         <b>{{error}}</b>
@@ -9,7 +12,8 @@
         <div class="card-header">
             Prekiu sarasas
         </div>
-        <div class="card-body">
+       <div class="card-body">
+            <!--
             <table class="table">
                 <thead>
                     <tr>
@@ -24,7 +28,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let preke of prekiuSarasas;let i=index">
-                        <td style="width: 200px;">
+                         <td style="width: 200px;">
                             <img src="{{preke.image}}" class="img-thumbnail" alt=".img">
                         </td>
                         
@@ -37,10 +41,16 @@
                         <td>
                             <a class="btn btn-primary" [routerLink]="['/update',preke.id]" >Redaguoti</a>&nbsp;
                             <button class="btn btn-danger m-1" type="button" (click)="delete(preke.id)">Istrinti</button>
-                        </td>
+                        </td> 
                     </tr>
                 </tbody>
             </table>
+            -->
+            <div class="row">
+                <app-list-item *ngFor="let preke of prekiuSarasas;let i=index" class="col-md-4 col-sm-6 col-lg-3 mb-3" [preke]="preke" (afterDelete)="afterDelete($event)"></app-list-item>
+            </div>
+               
+        </div> 
         </div>
     </div>
-</div>
+
