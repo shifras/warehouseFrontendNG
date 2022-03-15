@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-nevigation',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NevigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public user:UserService) { }
 
   ngOnInit(): void {
   }
 
+  logoutButton(){
+    this.user.logout();
+  }
 }
