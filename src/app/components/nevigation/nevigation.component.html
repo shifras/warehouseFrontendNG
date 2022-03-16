@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3" *ngIf="user.username!=null">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3" *ngIf="user!=null">
     <a class="navbar-brand" routerLink="/">Sandelys</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
       
     </div>
     
-    <div class="float-end" *ngIf="user.username!=null">
+    <div class="float-end" *ngIf="user!=null">
       <button (click)="logoutButton()" class="btn btn-info">Atsijungti</button>
       Jus prisijunges kaip: {{user.username}}
     </div>
