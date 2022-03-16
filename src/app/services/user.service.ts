@@ -20,11 +20,11 @@ export class UserService {
     this.user=new User(username, password);
     this.loggedIn=true;
     //cia toks specifinis kintamasis kuris yra globalus
-    localStorage.setItem("user",JSON.stringify(this.user));
+    localStorage.setItem("user",btoa(JSON.stringify(this.user)));
   }
 
   public autoLogin(){
-    const user:User=JSON.parse(localStorage.getItem("user"));
+    const user:User=JSON.parse( atob(localStorage.getItem("user")));
     //patikrinam ar vartotojo duomenys yra localstorage
     if (!user){
       //jei nera userio nutraukiam vykdyma
