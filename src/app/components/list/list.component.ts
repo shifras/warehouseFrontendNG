@@ -17,10 +17,10 @@ export class ListComponent implements OnInit {
   public error;
 
   constructor(private prekiuService: PrekesService, private user: UserService, private router: Router) {
-    if (!user.isLoggedIn()){
-      this.router.navigate(["/login"]);
-      console.log("cia konsole");
-    }
+    // if (!user.isLoggedIn()){
+    //   this.router.navigate(["/login"]);
+    //   console.log("cia konsole");
+    // }
    }
 
   
