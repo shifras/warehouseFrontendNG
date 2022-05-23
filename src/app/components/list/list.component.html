@@ -5,8 +5,8 @@
     <div *ngIf="isLoading && !isError" class="text-center">
         <img src="https://c.tenor.com/gF5waDlWTeIAAAAC/yjhcmovie-loading.gif">
     </div>
-    <div class="alert alert-danger" *ngIf="isError">
-        <b>{{error}}</b>
+    <div class="alert alert-danger" *ngIf="isError" [innerHTML]="error">
+        <!-- <b>{{error}}</b> -->
     </div>
     <div class="card" *ngIf="!isLoading">
         <div class="card-header">

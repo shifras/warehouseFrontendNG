@@ -22,6 +22,8 @@ export class ListItemComponent implements OnInit {
       this.afterDelete.emit();
     }
     ,(response)=>{
+      console.log(response);
+      console.log("cia yra tekstas");
       this.afterDelete.emit(response.error.name);
     }
     );

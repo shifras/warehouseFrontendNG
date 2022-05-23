@@ -31,8 +31,7 @@ private headers=new HttpHeaders({
   constructor(private http:HttpClient, private user:UserService) { } //cia yra iskvieciams Http kliento singletonas
 
   public getPrekes(){
-    return this.http.get<Preke[]>("http://localhost:8080/prekes/"  )
-    .pipe(catchError( this.checkLogin ));
+    return this.http.get<Preke[]>("http://localhost:8080/prekes/"  );//.pipe(catchError( this.checkLogin ));
   }
 
   public addPreke(id, name, description, price, ammount, image){
@@ -42,7 +41,7 @@ private headers=new HttpHeaders({
       price:price,
       ammount:ammount,
       image:image
-    } ).pipe(catchError( this.checkLogin ));
+    } );//.pipe(catchError( this.checkLogin ));
   }
 
   public getPreke(id){
@@ -57,7 +56,7 @@ private headers=new HttpHeaders({
       price:price,
       ammount:ammount,
       image:image
-    } ).pipe(catchError( this.checkLogin ));
+    } );//.pipe(catchError( this.checkLogin ));
   }
 
   // klaustukas reiskia kad nebutina paduoti id
@@ -70,7 +69,7 @@ private headers=new HttpHeaders({
   }
 
   public deletePreke(id){
-    return this.http.delete("http://localhost:8080/prekes/"+id  ).pipe(catchError( this.checkLogin )); //jei nera subscriberio tai nevykdo to kodo
+    return this.http.delete("http://localhost:8080/prekes/"+id  );//.pipe(catchError( this.checkLogin )); //jei nera subscriberio tai nevykdo to kodo
   }
 }
 
